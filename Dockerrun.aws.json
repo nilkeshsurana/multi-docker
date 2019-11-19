@@ -1,0 +1,37 @@
+{
+    "AWSEBDockerrunVersion" : 2,
+    "ContainerDefinitions": [
+        {
+            "name" : "client",
+            "image" : "nilkeshsurana/multi-client",
+            "hostname" : "client",
+            "essential" : false
+        },
+        {
+            "name" : "server",
+            "image" : "nilkeshsurana/multi-server",
+            "hostname" : "api",
+            "essential" : false
+        },
+        {
+            "name" : "worker",
+            "image" : "nilkeshsurana/multi-worker",
+            "hostname" : "worker",
+            "essential" : false
+        },
+        {
+            "name" : "nginx",
+            "image" : "nilkeshsurana/multi-nginx",
+            "hostname" : "nginx",
+            "essential" : true,
+            "portMappings": [
+                {
+                    "hostPort" : 80,
+                    "containerPort" : 80
+                }
+            ],
+            "links": ["client","server"]
+        }
+
+    ] 
+}

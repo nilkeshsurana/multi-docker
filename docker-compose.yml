@@ -41,7 +41,7 @@ services:
             - REDIS_PORT=6379
         build:
             dockerfile: Dockerfile.dev
-            context: ./client
+            context: ./worker
        
 
     
